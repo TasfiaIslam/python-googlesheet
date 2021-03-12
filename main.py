@@ -21,4 +21,9 @@ sheet = service.spreadsheets()
 result = sheet.values().get(spreadsheetId=SAMPLE_SPREADSHEET_ID,
                             range="Sheet1!A1:H90").execute()
 values = result.get('values', [])
+
+testvalues = [["1",20],["2",400],["3",50]]
+
+request = sheet.values().update(spreadsheetId=SAMPLE_SPREADSHEET_ID, 
+    range="Sheet2!A1", valueInputOption="USER_ENTERED", body={"values": testvalues}).execute()
 print(values)
