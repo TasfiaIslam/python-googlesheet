@@ -2,7 +2,7 @@ from googleapiclient.discovery import build
 from google.oauth2 import service_account
 from decouple import config
 
-SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
+SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
 SERVICE_ACCOUNT_FILE = 'keys.json'
 
 creds = None
@@ -19,6 +19,6 @@ service = build('sheets', 'v4', credentials=creds)
 # Call the Sheets API
 sheet = service.spreadsheets()
 result = sheet.values().get(spreadsheetId=SAMPLE_SPREADSHEET_ID,
-                            range="Mar-2016!A3:G46").execute()
+                            range="Sheet1!A1:H90").execute()
 values = result.get('values', [])
 print(values)
